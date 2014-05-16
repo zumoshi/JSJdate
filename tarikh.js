@@ -13,6 +13,8 @@ var JDate=function(d){
         var g=d.getMonth()+1,h=1721424.5+365*(e-1)+Math.floor((e-1)/4)+-Math.floor((e-1)/100)+Math.floor((e-1)/400)+Math.floor((367*g-362)/12+(2>=g?0:0!=e%4||0==e%100&&0!=e%400?-2:-1)+new Number(d.getDate()))+Math.floor(new Number(d.getSeconds())+60*(new Number(d.getMinutes())+60*new Number(d.getHours()))+0.5)/86400,k,n,p,q,s,t,u,v,w,h=Math.floor(h)+0.5;p=h-b(475,1);q=Math.floor(p/1029983);s=p-1029983*Math.floor(p/1029983);
         1029982==s?t=2820:(u=Math.floor(s/366),v=s-366*Math.floor(s/366),t=Math.floor((2134*u+2816*v+2815)/1028522)+u+1);k=t+2820*q+474;0>=k&&k--;w=h-b(k,1)+1;n=186>=w?Math.ceil(w/31):Math.ceil((w-6)/30);return ([k,n,h-b(k,n)+1]);}
     if(typeof d==="undefined"){jdo.set(new Date()/1000)}
+    else if(typeof d==="string" && /\+(\d+)[d]/.test(d))jdo.set(((new Date).getTime()/1000)+(parseInt(d.match(/\+(\d+)[d]/)[1])*86400))
+    else if(typeof d==="string" && /\-(\d+)[d]/.test(d))jdo.set(((new Date).getTime()/1000)-(parseInt(d.match(/\-(\d+)[d]/)[1])*86400))
     else if(typeof d==="object" && typeof d.getTime==="function"){jdo.set(d.getTime()/1000)}
     else jdo.set(jdo.inp(d))
     

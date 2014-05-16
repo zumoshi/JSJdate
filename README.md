@@ -30,7 +30,11 @@ With a JSDate Object:
 ```Javascript
 JDate(new Date("2010/5/5")).toString()	//--> "1389/2/15"
 ```
-
+With a Relative date:
+```Javascript
+JDate('+5d').toString()	//--> "1393/3/1" (today + 5 days)
+JDate('-5d').toString()	//--> "1393/2/22" (today - 5 days)
+```
 
 Include
 ========
