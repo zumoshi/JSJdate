@@ -1,6 +1,7 @@
 var JDate=function(d){
+    //  https://github.com/zumoshi/JSJdate
     var jdo={}
-    jdo.set=function(t){jdo.d=new Date(t*1000);var a=jdo.tarikh(jdo.d.getTime()/1000);jdo.rooz=a[2];jdo.mah=a[1];jdo.sal=a[0]},
+    jdo.set=function(t){jdo.d=new Date((t-(t%86400))*1000);var a=jdo.tarikh(Math.floor(jdo.d.getTime()/1000));jdo.rooz=a[2];jdo.mah=a[1];jdo.sal=a[0]},
     jdo.inp=function(i){return new Date(i).getTime()/1000},
     jdo.toString=function(d){return jdo.sal+'/'+jdo.mah+'/'+jdo.rooz},
     jdo.getRooz=function(){return ['یکشنبه','دوشنبه','سه شنبه','چهار شنبه','پنچ شنبه','جمعه','شنبه'][(jdo.d.getDay())%7]},
