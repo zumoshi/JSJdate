@@ -8,29 +8,29 @@ Really small (only 2KB) and accurate converter
 Usage
 =======
 
+without parameters : (returns Now)
 ```Javascript
-JDate.now()
+JDate().toString()	//--> "1393/2/27"
+JDate().getRooz()	//--> "جمعه"
+JDate().getMah()	//--> "اردیبهشت"
+JDate().getDate()	//--> 27
+JDate().getMonth()	//--> 2
+JDate().getYear()	//--> 1393
 ```
-returns a Javascript Object like:
+
+With a String Miladi Date:
 ```Javascript
-{"rooz":22,"mah":11,"sal":1392,"day":22,"month":11,"year":1392}
+JDate("2010/5/5").toString()	//--> "1389/2/15"
 ```
-which can be converted to string 
+With a TimeStamp:
 ```Javascript
-JDate.toString({"rooz":22,"mah":11,"sal":1392,"day":22,"month":11,"year":1392}) //returns "1392/11/22"
+JDate(1273001400000).toString()	//--> "1389/2/15"
 ```
-you may also use toString function on JDate
+With a JSDate Object:
 ```Javascript
-JDate.now().toString() //returns "1392/11/22"
+JDate(new Date("2010/5/5")).toString()	//--> "1389/2/15"
 ```
-you can also convert any date to Shamsi date
-```Javascript
-JDate.tabdil("2010/5/5").toString() //returns "1389/2/15"
-```
-or TimeStamps
-```Javascript
-JDate.tabdil(1392099382*1000).toString() //returns "1392/11/22"
-```
+
 
 Include
 ========
