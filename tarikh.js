@@ -1,9 +1,11 @@
 var JDate=function(d){
     //  https://github.com/zumoshi/JSJdate
     var jdo={}
-    jdo.set=function(t){jdo.d=jdo._000(new Date((t)*1000));var a=jdo.tarikh(Math.floor(jdo.d.getTime()/1000));jdo.rooz=a[2];jdo.mah=a[1];jdo.sal=a[0]}
+    jdo.set=function(t){if(t<10000000000)t=t*1000;  //bugfix so timestamps from php (without milisec) would work
+                                                    //side effect : prevents convert of dates in 1970
+        jdo.d=jdo._000(new Date(t));var a=jdo.tarikh(Math.floor(jdo.d.getTime()/1000));jdo.rooz=a[2];jdo.mah=a[1];jdo.sal=a[0]}
     jdo._000=function(t){t.setHours(0);t.setMinutes(0);t.setSeconds(0);return t;}
-    jdo.inp=function(i){return new Date(i).getTime()/1000}
+    jdo.inp=function(i){return new Date(i).getTime()}
     jdo.toString=function(d){return jdo.sal+'/'+jdo.mah+'/'+jdo.rooz}
     jdo.getRooz=function(){return ['یکشنبه','دوشنبه','سه شنبه','چهار شنبه','پنچ شنبه','جمعه','شنبه'][(jdo.d.getDay())%7]}
     jdo.getMah=function(){return ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"][(jdo.mah-1)];}

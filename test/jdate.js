@@ -55,5 +55,11 @@ vows.describe('Convert date to shamsi').addBatch({
         'getRooz': function(topic){
             assert.equal (topic.getRooz(), 'چهار شنبه');
         }
+    },
+    'given php timestamp': {
+        topic: function () { return JDate(1273017600) },
+        'we should get the same result as with milisec':function(topic){
+            assert.equal (topic.toString(),JDate(1273017600*1000).toString())
+        }
     }
 }).export(module);
